@@ -1,30 +1,25 @@
 {
    "background": {
-      "page": "backgroundService.html"
+      "page": "backgroundPage.html"
    },
    "browser_action": {
       "default_icon": "img/48.png",
       "default_popup": "popup.html"
    },
-   "content_scripts": [
-      {
-         "matches": ["<all_urls>"],
-         "js": ["js/contentScript.js"],
-         "run_at": "document_end"
-      }
-   ],
-   "description": "תוסף התרעות על אזעקות צבע אדום",
+   "content_security_policy": "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; object-src 'self'",
+   "default_locale": "he",
+   "description": "__MSG_appDesc__",
    "icons": {
       "128": "img/128.png",
       "16": "img/16.png",
       "48": "img/48.png"
    },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhMvXDAYUwoIYNMSbOp98xC0odQ7JmkE4h97s84JQmMj3sTQ1nZWqPUVAY3w5yFgH/RbXYddRcqdx+TUZx1i5yTPducuCQsjmb6SJtOCM+WnJ7kxrdq/7IRGN/55fvSLVS+LXfUq67vxjyCNbww7IQPBRovnLxYgI2Xe+jgmZMdEW/t/kCY1bPl4VjIX3QaZ5c6gEdNeI9JtHridSLP2F9nBFfkGhi3Ar2SskbQVYAPDBGBVrM715IB3xJ4BAnorYzGmbr1QhAzX7D/lWVQc3GIHAEA07DCqXGMheg9Cjenjuinha8SY90TK5mLXYruPpDw94TZnS4WMBl8iqsbb00wIDAQAB",
    "manifest_version": 2,
-   "name": "צופר - צבע אדום",
-   "permissions": [ "*://tzevaadom.co.il/*", "*://*.tzevaadom.co.il/*", "background", "notifications", "storage", "tabs" ],
-   "short_name": "צופר - צבע אדום",
-   "content_security_policy": "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; object-src 'self'",
+   "name": "__MSG_appTitle__",
+   "permissions": [ "*://tzevaadom.co.il/*", "*://*.tzevaadom.co.il/*", "background", "notifications", "storage" ],
+   "short_name": "__MSG_appTitle__",
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "web_accessible_resources": ["logo.png", "alert.html"],
-   "version": "1.0.3"
+   "version": "1.1.5",
+   "web_accessible_resources": [ "logo.png", "alert.html" ]
 }

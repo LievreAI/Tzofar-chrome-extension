@@ -1,8 +1,9 @@
 class Alert {
-    constructor(timestamp, cities, threatID) {
+    constructor(timestamp, cities, threatID, isDrill) {
         this.timestamp = timestamp;
         this.cities = cities;
         this.threatID = threatID;
+        this.isDrill = isDrill;
     }
 
     getTimestamp() {

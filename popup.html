@@ -1,84 +1,147 @@
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <script src="js/Preferences.js"></script>
-        <script src="js/Localization.js"></script>
-        <script src="js/City.js"></script>
-        <script src="js/Area.js"></script>
-        <script src="js/Alert.js"></script>
-        <script src="js/History.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/popup.css" />
-    </head>
-    <body>
-        <div id="tablinks_container">
-            <button class="tablink" forPageID="Home">{recentAlerts}</button>
-            <button class="tablink" forPageID="Sounds">{sounds}</button>
-            <button class="tablink" forPageID="Cities">{cities}</button>
-            <button class="tablink" forPageID="Other">{other}</button>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src="js/Preferences.js"></script>
+    <script src="js/Localization.js"></script>
+    <script src="js/City.js"></script>
+    <script src="js/Area.js"></script>
+    <script src="js/Alert.js"></script>
+    <script src="js/History.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  </head>
+  <body>
+    <div id="tablinks_container">
+      <button class="tablink" forPageID="Home">{recentAlerts}</button>
+      <button class="tablink" forPageID="Sounds">{sounds}</button>
+      <button class="tablink" forPageID="Cities">{cities}</button>
+      <button class="tablink" forPageID="Other">{other}</button>
+    </div>
+
+    <div id="Home" class="page">
+      <div class="alertsServerConnectionError" id="alertsServerConnectionError">
+        <p>{alertsServerConnectionError}</p>
+      </div>
+      <div id="alertDetails">
+        <div id="openInBrowser"></div>
+        <div id="close">›</div>
+        <iframe></iframe>
+      </div>
+    </div>
+
+    <div id="Sounds" class="page">
+      <h3>{selectSoundTitle}</h3>
+      <p>{selectSoundDesc}</p>
+      <div class="card">
+        <input type="checkbox" id="readCities" />
+        <label for="readCities">{readCities}</label>
+        <p class="description">{readCitiesDesc}</p>
+      </div>
+      <input type="radio" name="sound" id="bell" /><label for="bell">{bell}</label><br />
+      <input type="radio" name="sound" id="tone" /><label for="tone">{tone}</label><br />
+      <input type="radio" name="sound" id="alarm" /><label for="alarm">{alarm}</label><br />
+      <input type="radio" name="sound" id="redalert" /><label for="redalert">{redalert}</label
+      ><br />
+      <input type="radio" name="sound" id="redalert2" /><label for="redalert2">{redalert2}</label
+      ><br />
+      <input type="radio" name="sound" id="redalert3" /><label for="redalert3">{redalert3}</label
+      ><br />
+      <input type="radio" name="sound" id="warning" /><label for="warning">{warning}</label><br />
+      <input type="radio" name="sound" id="message" /><label for="message">{message}</label><br />
+      <input type="radio" name="sound" id="secondary" /><label for="secondary">{secondary}</label
+      ><br />
+      <input type="radio" name="sound" id="alert" /><label for="alert">{alert}</label><br />
+      <input type="radio" name="sound" id="bip" /><label for="bip">{bip}</label><br />
+
+      <input type="radio" name="sound" id="calm" /><label for="calm">{calm}</label><br />
+      <input type="radio" name="sound" id="silent" /><label for="silent">{silent}</label>
+    </div>
+
+    <div id="Cities" class="page">
+      <h3>{selectCitiesTitle}</h3>
+      <p>{selectCitiesDesc}</p>
+      <div id="selection">
+        <div class="flex">
+          <button id="clear" class="card">{clearSelection}</button>
+          <input id="search" class="card" placeholder="{searchCities}" />
         </div>
-            
-        <div id="Home" class="page">
+        <div id="selected"></div>
+      </div>
+    </div>
 
+    <div id="Other" class="page">
+      <h3>{otherTitle}</h3>
+      <h4>{alertsTitle}</h4>
+
+      <!-- <h4 id="selectThreatsTitle">{selectThreatsTitle}</h4> -->
+      <label for="selectThreatsTitle">{selectThreatsTitle}</label>
+      <div class="multiselect" id="multiselect">
+        <div class="selectBox" id="selectBox">
+          <select>
+            <option id="selectedThreatsTitle"></option>
+          </select>
+          <div class="overSelect"></div>
         </div>
-
-        <div id="Sounds" class="page">
-            <h3>{selectSoundTitle}</h3>
-            <p>{selectSoundDesc}</p>
-            <input type="radio" name="sound" id="bell"><label for="bell">{bell}</label><br>
-            <input type="radio" name="sound" id="tone"><label for="tone">{tone}</label><br>
-            <input type="radio" name="sound" id="alarm"><label for="alarm">{alarm}</label><br>
-            <input type="radio" name="sound" id="redalert"><label for="redalert">{redalert}</label><br>
-            <input type="radio" name="sound" id="redalert2"><label for="redalert2">{redalert2}</label><br>
-            <input type="radio" name="sound" id="warning"><label for="warning">{warning}</label><br>
-            <input type="radio" name="sound" id="message"><label for="message">{message}</label><br>
-            <input type="radio" name="sound" id="secondary"><label for="secondary">{secondary}</label><br>
-            <input type="radio" name="sound" id="alert"><label for="alert">{alert}</label><br>
-            <input type="radio" name="sound" id="calm"><label for="calm">{calm}</label><br>
-            <input type="radio" name="sound" id="silent"><label for="silent">{silent}</label>
+        <div id="threats-checkboxes">
+          <label for="0"> <input type="checkbox" id="0" />{threat0}</label>
+          <label for="1"> <input type="checkbox" id="1" />{threat1}</label>
+          <label for="2"> <input type="checkbox" id="2" />{threat2}</label>
+          <label for="3"> <input type="checkbox" id="3" />{threat3}</label>
+          <label for="4"> <input type="checkbox" id="4" />{threat4}</label>
+          <label for="5"> <input type="checkbox" id="5" />{threat5}</label>
+          <label for="6"> <input type="checkbox" id="6" />{threat6}</label>
+          <label for="7"> <input type="checkbox" id="7" />{threat7}</label>
+          <label for="8"> <input type="checkbox" id="8" />{threat8}</label>
         </div>
-            
-        <div id="Cities" class="page">
-            <h3>{selectCitiesTitle}</h3>
-            <p>{selectCitiesDesc}</p>
-            <div id="selection">
-                <div class="flex">
-                    <button id="clear" class="card">{clearSelection}</button>
-                    <input id="search" class="card" placeholder="{searchCities}" />
-                </div>
-                <div id="selected"></div>
-            </div>
-        </div>
-            
-        <div id="Other" class="page">
-            <h3>{otherTitle}</h3>
+      </div>
+      <br />
 
-            <h4>{alertsTitle}</h4>
-            <input type="checkbox" id="desktopNotifications"><label for="desktopNotifications">{desktopNotifications}</label><br>
-            <input type="checkbox" id="backgroundHidePopup"><label for="backgroundHidePopup">{backgroundHidePopup}</label><br>
-            <input type="checkbox" id="alertsOverSites"><label for="alertsOverSites">{alertsOverSites}</label><br>
+      <input type="checkbox" id="drillsAlerts" /><label for="drillsAlerts">{drillsAlerts}</label
+      ><br />
 
-            <h4 id="languageTitle">{selectLanguageTitle}</h4>
-            <select id="language">
-                <option value="HE">עברית</option>
-                <option value="EN">English</option>
-                <option value="ES">Español</option>
-                <option value="AR">عربيه</option>
-                <option value="RU">русский</option>
-            </select>
+      <input type="checkbox" id="desktopNotifications" /><label for="desktopNotifications"
+        >{desktopNotifications}</label
+      ><br />
+      <input type="checkbox" id="backgroundHidePopup" /><label for="backgroundHidePopup"
+        >{backgroundHidePopup}</label
+      ><br />
+      <input style="display: none" type="checkbox" id="alertsOverSites" /><label
+        for="alertsOverSites"
+        style="display: none"
+        >{alertsOverSites}</label
+      ><br style="display: none" />
 
-            <hr/>
+      <label for="languageTitle">{selectLanguageTitle}</label>
+      <!-- <h4 id="languageTitle">{selectLanguageTitle}</h4> -->
+      <select id="language">
+        <option value="HE">עברית</option>
+        <option value="EN">English</option>
+        <option value="ES">Español</option>
+        <option value="AR">عربيه</option>
+        <option value="RU">русский</option>
+      </select>
 
-            <button id="testAlert">{testAlert}</button>
+      <hr />
 
-            <hr/>
+      <button id="testAlert">{testAlert}</button>
 
-            <h3>{aboutTitle}</h3>
-            <p>
-                {aboutText}
-                <br><br><br>
-                <img style="width: 60;" src="https://www.tzevaadom.co.il/icon.png"/>
-            </p>
-        </div>
-    </body>
-    <script src="js/popup.js"></script>
+      <hr />
+
+      <h3>{aboutTitle}</h3>
+      <p>
+        {aboutText}
+        <br />
+        <a
+          id="systemsPageUrl"
+          style="color: red"
+          href="https://www.tzevaadom.co.il/systems/"
+          target="_blank"
+        >
+          {moreInfo}</a
+        >
+        <br /><br /><br />
+        <img style="width: 60" src="img/notify.png" />
+      </p>
+    </div>
+  </body>
+  <script src="js/popup.js"></script>
 </html>
